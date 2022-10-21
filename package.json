@@ -10,7 +10,7 @@
     "watch:main": "node-sass sass/main.scss css/main.css -w",
     "prefix:boot": "postcss --use autoprefixer -b 'last 10 versions' css/bootstrap.min.css -o css/bootstrap.min.css",
     "prefix:main": "postcss --use autoprefixer -b 'last 10 versions' css/main.css -o css/main.css",
-    "concat:css": "concat -o css/bootstrap.min.css css/main.css css/app.css",
+    "concat:css": "concat -o css/app.css css/bootstrap.min.css css/main.css",
     "compress:css": "node-sass css/app.css css/app.css --output-style compressed",
     "build:css": "npm-run-all compile:boot compile:main prefix:boot prefix:main concat:css compress:css"
   },
