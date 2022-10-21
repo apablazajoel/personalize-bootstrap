@@ -5,10 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "compile:sass": "node-sass sass/custom.scss css/bootstrap.min.css",
-    "prefix:css": "postcss --use autoprefixer -b 'last 10 versions' css/bootstrap.min.css -o css/bootstrap.min.css",
-    "compress:css": "node-sass css/bootstrap.min.css css/bootstrap.min.css --output-style compressed",
-    "build:css": "npm-run-all compile:sass prefix:css compress:css"
+    "compile:boot": "node-sass sass/custom.scss css/bootstrap.min.css",
+    "compile:main": "node-sass sass/main.scss css/main.css",
+    "watch:main": "node-sass sass/main.scss css/main.css -w",
+    "prefix:boot": "postcss --use autoprefixer -b 'last 10 versions' css/bootstrap.min.css -o css/bootstrap.min.css",
+    "prefix:main": "postcss --use autoprefixer -b 'last 10 versions' css/main.css -o css/main.css",
+    "concat:css": "concat -o css/bootstrap.min.css css/main.css css/app.css",
+    "compress:css": "node-sass css/app.css css/app.css --output-style compressed",
+    "build:css": "npm-run-all compile:boot compile:main prefix:boot prefix:main concat:css compress:css"
   },
   "keywords": [],
   "author": "",
